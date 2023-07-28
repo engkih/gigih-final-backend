@@ -1,5 +1,5 @@
 # Tokopedia Play (Backend)
-This project build for my generasi gigih midterm project.
+This project build for my generasi gigih midterm project. This project is the backend for the clone Tokopedia Play, it will return the value of videos, products, cand comments collection. We can add new comment documents to the comments collection.
 
 ## Dataase Structure
 The database is using MongoDB utulizing mongoose. The default database url was stored in ```.env``` file refered as ```DATABASE_URL```. The default value is :
