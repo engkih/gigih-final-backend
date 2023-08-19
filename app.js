@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
 mongoose.connect(mongoString);
 const database = mongoose.connection;
+const cors = require ('cors')
+
+app.use(cors())
 
 database.on('error', (error) => {
     console.log(error);
@@ -28,4 +31,4 @@ app.use(
 
 app.use('/', routes);
 
-app.listen(3000);
+app.listen(3030);

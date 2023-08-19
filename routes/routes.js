@@ -8,7 +8,7 @@ const Users = require('../model/user-model');
 //res video data
 router.get('/', async (req, res) => {
     try{
-        const videos = await Videos.find({},'videoId videoUrl');
+        const videos = await Videos.find({},'videoUrl');
         res.json(videos)
     }
     catch(error){
@@ -18,9 +18,11 @@ router.get('/', async (req, res) => {
 
 //res product list and comment list inside video page
 router.get('/:videoid', async (req, res) => {
-    let videoid = parseInt(req.params.videoid);
+    let videoid = req.params.videoid
+    // let videoid = parseInt(req.params.videoid);
+    console.log(req.params.videoid)
     try{
-        const comments = await Comments.find({videoId: videoid}, 'userName comment timestamp');
+        const comments = await Comments.find({videoId: videoid});
         const products = await Products.aggregate([{ $sample: { size: 4}}]);
         res.json({products,comments})
     }
@@ -31,16 +33,18 @@ router.get('/:videoid', async (req, res) => {
 
 });
 
+
 //post new comment
-router.post('/:videoid/:userid', async (req, res) => {
-    let videoid = parseInt(req.params.videoid);
-    let userid = parseInt(req.params.userid);
-    const usernameFind = await Users.findOne({userId: userid});
+router.post('/:videoid/:username', async (req, res) => {
+    let videoid = req.params.videoid;
+    let username = req.params.username
+    // let userid = parseInt(req.params.username);
+    // const usernameFind = await Users.findOne({userId: userid});
     const commentReq = req.body.comment;
     const comment = new Comments ({
         videoId: videoid,
-        userId: userid,
-        userName: usernameFind.userName,
+        // userId: userid,
+        username: username,
         comment: commentReq,
         timestamp: new Date()
     })

@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema({
     videoId: {
         required: true,
-        type: Number
+        type: String
     },
     userId: {
-        required: true,
+        required: false,
         type: Number
     },
-    userName: {
+    username: {
         required: true,
         type: String
     },
