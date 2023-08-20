@@ -65,7 +65,7 @@ This collection used as schema for comments database
 ```
     videoId: {
         required: true,
-        type: Number
+        type: String
     },
     userId: {
         required: true,
@@ -190,7 +190,7 @@ Content type : application/json
 5. Test the API
    The servir will run on :
    ```
-   http://localhost:3000
+   http://localhost:3030
    ```
 
 ## How To Test API
@@ -248,13 +248,13 @@ $product =
 
 3. To test the ```GET '/'```, it will send repond list of embeded youtube video
    ```
-   http://localhost:300
+   http://localhost:3030
    ```
 4. To test the ```GET '/:videoid```, it will send respond list of 4 products randomly, and list of all comment base on ```/:videoid```.
    ```
-   http://localhost:3000/:videoid
+   http://localhost:3030/:videoid
    ```
 5. To test the ```POST /:videoid/:userid```, it will send new comment to the database based on ```/:videoid```.
    ```
-   http://localhost:3000/:videoid/:userid
+   http://localhost:3030/:videoid/:userid
    ```
